@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salon Rotex</title>
-    <link rel="stylesheet" href="style.css">
-
+    <title>SALON ROTEX</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     <header>
-        <img src="salon rotex.png" alt="rotex">
-        <ul>
-            <li>saiba mais</li>
-            <li>comprar</li>
-        </ul>
+        <h1>Bem-vindo(a) aos Jogos SALON ROTEX</h1>
     </header>
+    <nav>
+        <ul>
+            <li><a href="#jogo-da-velha">Jogo da Velha</a></li>
+            <li><a href="#jogo-da-memoria">Jogo da Memória</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="jogo-da-velha">
+            <h2>Jogo da Velha</h2>
+            <p>Aqui está o Jogo da Velha para você jogar:</p>
+            <button onclick="iniciarJogoDaVelha()">Iniciar Jogo</button>
+            <div id="tabuleiro-jogo-da-velha"></div>
+        </section>
+        <section id="jogo-da-memoria">
+            <h2>Jogo da Memória</h2>
+            <p>Escolha o assunto:</p>
+            <ul>
+                <li><button onclick="iniciarJogoDaMemoria('carros')">Carros</button></li>
+                <li><button onclick="iniciarJogoDaMemoria('cidades')">Cidades</button></li>
+                <li><button onclick="iniciarJogoDaMemoria('marcas')">Marcas</button></li>
+            </ul>
+            <div id="tabuleiro-jogo-da-memoria"></div>
+        </section>
+    </main>
+    <footer>
+        <p>Desenvolvido por [Seu Nome]</p>
+    </footer>
+
+    <script src="jogo_da_velha.js"></script>
+    <script src="jogo_da_memoria.js"></script>
 </body>
 </html>
