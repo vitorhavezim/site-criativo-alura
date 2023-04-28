@@ -1,12 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<title>Jogo da Velha</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			margin: 0 auto;
+		}
+		td {
+			border: 1px solid black;
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			font-size: 30px;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-    
-</body>
-</html>
+
+	<h1>Jogo da Velha</h1>
+
+	<table>
+		<tr>
+			<td id="0"></td>
+			<td id="1"></td>
+			<td id="2"></td>
+		</tr>
+		<tr>
+			<td id="3"></td>
+			<td id="4"></td>
+			<td id="5"></td>
+		</tr>
+		<tr>
+			<td id="6"></td>
+			<td id="7"></td>
+			<td id="8"></td>
+		</tr>
+	</table>
+
+	<script>
+		// Inicializa o tabuleiro
+		var board = ["", "", "", "", "", "", "", "", ""];
+
+		// Jogador atual (X ou O)
+		var currentPlayer = "X";
+
+		// Obtém todos os elementos TD da tabela
+		var tds = document.getElementsByTagName("td");
+
+		// Adiciona um listener de clique a cada TD
+		for (var i = 0; i < tds.length; i++) {
+			tds[i].addEventListener("click", function() {
+				// Obtém o ID do TD clicado
+				var id = this.getAttribute("id");
+
+				// Verifica se a posição já está ocupada
+				if (board[id] != "") {
+					alert("Posição já ocupada!");
+					return;
+				}
+
+				// Define a posição como a jogada do jogador atual
+				board[id] = currentPlayer;
+
+				// Atualiza o conteúdo do TD
+				this.innerHTML = currentPlayer;
+
+				// Verifica se houve vitória
+				if (checkWin()) {
+					alert("Jogador " + currentPlayer + " venceu!");
+					resetBoard();
+					return;
+				}
+
+				// Verifica se houve empate
+				if (checkTie()) {
+					alert("Empate!");
+					resetBoard();
+					return;
+				}
+
+				// Troca o jogador atual
+				currentPlayer = (currentPlayer == "X") ? "O" : "X";
+			});
+		}
+
+		// Verifica se houve vitória
+		function checkWin() {
+			// Verifica linhas
+			if (board[0] == currentPlayer && board[1] == currentPlayer && board[2] == currentPlayer) return true;
+			if (board[3] == currentPlayer && board[4] == currentPlayer && board[5] == currentPlayer) return true;
+			if (board[6] == currentPlayer && board[7] == currentPlayer && board[8] == currentPlayer) return true;
+
+			// Verifica colunas
+			if (board[0] == currentPlayer && board[3] == currentPlayer && board[6] == currentPlayer) return true;
+			if (board[1] == currentPlayer && board[4] == currentPlayer && board[7] == currentPlayer) return true;
+			if (board[2] == currentPlayer && board[5] == currentPlayer && board[8] == currentPlayer) return true;
+
+		
