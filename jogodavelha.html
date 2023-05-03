@@ -36,8 +36,10 @@ def jogar():
         
         # Obter a jogada do jogador atual
         print(f"Jogador {jogador_atual+1}, é sua vez.")
-        linha = int(input("Digite o número da linha (1 a 3): ")) - 1
-        coluna = int(input("Digite o número da coluna (1 a 3): ")) - 1
+        posicao = input("Digite a posição (linha,coluna): ")
+        posicao = posicao.split(",")
+        linha = int(posicao[0]) - 1
+        coluna = int(posicao[1]) - 1
         
         # Verificar se a jogada é válida
         if tabuleiro[linha][coluna] != " ":
@@ -50,18 +52,6 @@ def jogar():
         # Verificar se houve vencedor ou empate
         if verificar_vitoria(tabuleiro, jogadores[jogador_atual]):
             exibir_tabuleiro(tabuleiro)
-            print(f"Parabéns, jogador {jogador_atual+1}! Você venceu!")
-            break
-        
-        if all(" " not in linha for linha in tabuleiro):
-            exibir_tabuleiro(tabuleiro)
-            print("Empate!")
-            break
-        
-        # Passar a vez para o próximo jogador
-        jogador_atual = (jogador_atual + 1) % 2
-
-# Iniciar o jogo
-jogar()
+            print(f"Parabéns, jogador {jog
 
 		
