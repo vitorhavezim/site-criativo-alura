@@ -1,57 +1,46 @@
-def exibir_tabuleiro(tabuleiro):
-    print("\n")
-    for linha in tabuleiro:
-        print("|".join(linha))
-    print("\n")
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jogo da Velha</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
 
-def verificar_vitoria(tabuleiro, jogador):
-    # Verificar linhas
-    for linha in tabuleiro:
-        if all(celula == jogador for celula in linha):
-            return True
-    
-    # Verificar colunas
-    for coluna in range(3):
-        if all(tabuleiro[linha][coluna] == jogador for linha in range(3)):
-            return True
-    
-    # Verificar diagonais
-    if all(tabuleiro[i][i] == jogador for i in range(3)):
-        return True
-    
-    if all(tabuleiro[i][2-i] == jogador for i in range(3)):
-        return True
-    
-    return False
+      td {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 48px;
+        font-weight: bold;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="tabuleiro">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
 
-def jogar():
-    # Inicializar o tabuleiro vazio
-    tabuleiro = [[" "]*3 for _ in range(3)]
-    jogadores = ["X", "O"]
-    jogador_atual = 0
-    
-    # Loop principal do jogo
-    while True:
-        exibir_tabuleiro(tabuleiro)
-        
-        # Obter a jogada do jogador atual
-        print(f"Jogador {jogador_atual+1}, é sua vez.")
-        posicao = input("Digite a posição (linha,coluna): ")
-        posicao = posicao.split(",")
-        linha = int(posicao[0]) - 1
-        coluna = int(posicao[1]) - 1
-        
-        # Verificar se a jogada é válida
-        if tabuleiro[linha][coluna] != " ":
-            print("Jogada inválida! Essa posição já está ocupada.")
-            continue
-        
-        # Fazer a jogada
-        tabuleiro[linha][coluna] = jogadores[jogador_atual]
-        
-        # Verificar se houve vencedor ou empate
-        if verificar_vitoria(tabuleiro, jogadores[jogador_atual]):
-            exibir_tabuleiro(tabuleiro)
-            print(f"Parabéns, jogador {jog
+    <script src="jogo_da_velha.js"></script>
+  </body>
+</html>
+
 
 		
